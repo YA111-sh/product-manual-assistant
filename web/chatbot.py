@@ -14,6 +14,8 @@ def chat_message(role, message):
         align = "left"
         border_radius = "20px 20px 20px 0"
 
+
+
     st.markdown(
         f"""
         <div style="
