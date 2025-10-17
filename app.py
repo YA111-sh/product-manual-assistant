@@ -8,12 +8,14 @@ from service.chatbot_service import ask_question # ✅ new agent-based backend
 st.set_page_config(page_title="📘 PDF Chatbot", layout="wide")
 add_scroll_style()
 
+
 # st.title("Product Manual Assistant")
 st.markdown("""
-    <h2 style="text-align:center; color:#1E3A8A;">
+    <h2 style="text-align:center; color:#6ed994;position: relative;top: 15px">
         🤖 Product Manual Assistant
     </h2>
-    <p style="text-align:center;">Ask any question about your machine or equipment manuals.</p>
+            
+     <p style="text-align:center; color:#f11852;">Ask any question about your machine or equipment manuals.</p>
 """, unsafe_allow_html=True)
 # st.markdown("Ask questions about your product manual below")
 
