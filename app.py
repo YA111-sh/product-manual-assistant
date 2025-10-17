@@ -1,6 +1,6 @@
 import streamlit as st
 from web.chatbot import chat_message, add_scroll_style
-from service.chatbot_service import ask_question # ✅ new agent-based backend
+from service.chatbot_service import handle_query,handle_query_with_crew 
 
 
 
@@ -46,7 +46,7 @@ if query:
 if st.session_state.pending_query:
     with st.spinner("🤖 Assistant is thinking..."):
         # 🧠 Call the agent-based manager
-        answer = ask_question(st.session_state.pending_query)
+        answer = handle_query_with_crew(st.session_state.pending_query)
 
     # Store assistant message
     st.session_state.history.append({"role": "assistant", "message": answer})
