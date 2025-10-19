@@ -11,7 +11,7 @@ def get_base64_image(image_path):
     with open(image_path, "rb") as img_file:
         return base64.b64encode(img_file.read()).decode()
 
-img_base64 = get_base64_image("web/assets/6.jpg")
+img_base64 = get_base64_image("web/assets/7.png")
 
 def chat_message(role, message):
     """Render chat messages with modern styling"""
@@ -91,7 +91,7 @@ def add_scroll_style():
         background-repeat: no-repeat;
         height: 100vh;
         width: 100vw;
-    }}
+    }}  
     .overlay {{
         background-color: rgba(255, 255, 255, 0.85);
         padding: 2rem;

@@ -84,7 +84,7 @@ if query:
 # --- Process assistant response ---
 if st.session_state.pending_query:
     with st.spinner("🤖 Assistant is thinking..."):
-        # 🧠 Call the agent-based manager
+        # Call the agent-based manager
         answer = ask_question(st.session_state.pending_query)
 
     # Store assistant message
