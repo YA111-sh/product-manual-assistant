@@ -16,3 +16,8 @@ python-dotenv
 crewai>=0.28.8
 crewai-tools>=0.2.6
 langchain-community
+langchain
+langchain-community
+langchain-core
+langchain-openai
+langchain-text-splitters

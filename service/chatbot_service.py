@@ -9,11 +9,13 @@ import urllib.parse
 # Load environment variables
 # -------------------------------------------------------------
 from dotenv import load_dotenv
+
+from utils.document_search import DocumentSearchTool
 load_dotenv()
 
 AZURE_OPENAI_ENDPOINT = os.getenv("AZURE_OPENAI_ENDPOINT")
 AZURE_OPENAI_API_KEY = os.getenv("AZURE_OPENAI_API_KEY")
-AZURE_OPENAI_CHAT_DEPLOYMENT = os.getenv("CHAT_COMPLETIONS_DEPLOYMENT_NAME")
+AZURE_OPENAI_CHAT_DEPLOYMENT = os.getenv("AZURE_OPENAI_CHAT_DEPLOYMENT")
 AZURE_API_VERSION = "2024-05-01-preview"
 
 # -------------------------------------------------------------
@@ -28,7 +30,7 @@ client = AzureOpenAI(
 # -------------------------------------------------------------
 # Load the FAISS Vector Store
 # -------------------------------------------------------------
-vectorstore = load_vector_store()
+vectorstore = DocumentSearchTool().load_vectorstore()
 
 # -------------------------------------------------------------
 # Small talk / greetings
@@ -127,7 +129,7 @@ def ask_question(user_query: str, history=None) -> str:
     for key, responses in SMALL_TALK.items():
         if key in u:
             return random.choice(responses)
-
+    print("Vectorstore:", vectorstore)
     # --- Step 2: PDF-based answer ---
     docs = vectorstore.similarity_search(q, k=3)
     context = "\n\n".join([doc.page_content for doc in docs]) if docs else "No relevant context found."
@@ -164,7 +166,7 @@ Now respond in a friendly and conversational way.
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": prompt},
             ],
-            temperature=0.6,
+            temperature=0.2,
             max_tokens=800
         )
         answer = response.choices[0].message.content.strip()

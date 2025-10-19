@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from langchain_community.vectorstores import FAISS
 from langchain_openai import AzureOpenAIEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.docstore.document import Document
+from langchain_community.docstore.document import Document
 from PyPDF2 import PdfReader
 
 # ------------------------------
@@ -19,8 +19,8 @@ AZURE_ENDPOINT = os.getenv("AZURE_OPENAI_ENDPOINT")
 AZURE_API_VERSION = os.getenv("AZURE_EMBEDDING_API_VERSION", "2023-05-15")
 AZURE_EMBEDDING_DEPLOYMENT = os.getenv("AZURE_EMBEDDING_DEPLOYMENT_NAME")
 
-VECTORSTORE_PATH = "service/vectorstore/faiss_index"
-HASH_PATH = "service/vectorstore/pdf_hash.txt"  # store hash of current PDF
+VECTORSTORE_PATH = "backend/vectorstore/vendor_docs_embeddings"
+HASH_PATH = "backend/vectorstore/pdf_index_meta.json"  # store hash of current PDF
 
 # ------------------------------
 # Get Azure OpenAI Embeddings
